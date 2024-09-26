@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page URL Performance Report</title>
+    <!-- Include Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .alt-column:nth-child(even) {
+            background-color: #f3f4f6; /* Light Gray */
+        }
+        .alt-column:nth-child(odd) {
+            background-color: #e0f7fa; /* Light Cyan */
+        }
+        .table-header {
+            background-color: #4f46e5; /* Indigo */
+            color: #ffffff; /* White text */
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Header -->
+        <h1 class="text-4xl font-bold mb-6 text-center text-indigo-700">Landing Page URL Performance Report</h1>
+
+        <!-- Form to select date range and CTA button to pull data -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Select Data Range</h2>
+            <form id="data-form" class="flex flex-col md:flex-row items-center gap-4">
+                <div>
+                    <label for="since" class="block text-gray-700">From:</label>
+                    <input type="date" id="since" name="since" class="mt-1 p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="until" class="block text-gray-700">To:</label>
+                    <input type="date" id="until" name="until" class="mt-1 p-2 border border-gray-300 rounded-md">
+                </div>
+                <button type="button" onclick="fetchFacebookData()" class="bg-indigo-600 text-white px-6 py-3 rounded-md mt-4 md:mt-0 hover:bg-indigo-700">
+                    Authenticate and Fetch Ad Accounts
+                </button>
+            </form>
+        </div>
+
+        <!-- Ad Account Selection Dropdown -->
+        <div id="ad-account-container" class="bg-white shadow-md rounded-lg p-6 mb-8" style="display: none;">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Select an Ad Account</h2>
+            <select id="ad-account-select" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                <!-- Ad accounts will be populated here -->
+            </select>
+            <button type="button" onclick="fetchLandingPageUrlInsights()" class="bg-blue-600 text-white px-6 py-3 rounded-md mt-4 hover:bg-blue-700">
+                Fetch Landing Page URL Insights
+            </button>
+        </div>
+
+        <!-- Container for Displaying Landing Page Performance Data -->
+        <div id="landing-page-url-table-container" class="bg-white shadow-lg rounded-lg p-6 overflow-auto mt-8" style="display: none;">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Landing Page URL Insights Data</h2>
+            <table id="landing-page-url-table" class="min-w-full table-auto">
+                <thead id="landing-page-url-table-head">
+                    <!-- Headers for fetched data -->
+                </thead>
+                <tbody id="landing-page-url-table-body" class="bg-white divide-y divide-gray-200">
+                    <!-- Data rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="landing-page-data-fetch.js"></script>
+</body>
+</html>
