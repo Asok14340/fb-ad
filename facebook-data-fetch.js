@@ -39,6 +39,7 @@ function checkLoginState() {
 // Function to authenticate with Facebook and fetch ad accounts
 function authenticateWithFacebook() {
     FB.login(function (response) {
+        console.log(response);
         if (response.authResponse) {
             const accessToken = response.authResponse.accessToken;
             localStorage.setItem('fbAccessToken', accessToken); // Save access token to localStorage
